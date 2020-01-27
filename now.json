@@ -1,0 +1,9 @@
+{
+"name":"qiapp",
+"version":2,
+"env": {
+    "DECRYPTION_CIPHER": "aes-192-cbc",
+	"DECRYPTION_KEY": "@decryption_key",
+	"SECRET_DIR" : "./secrets",
+	"VAULT_NAME":"vault.js"
+  }}
