@@ -26,7 +26,7 @@ function MyApp ({ Component, pageProps,apollo}){
 				<title>QEUH QI Exchange</title>    
 				<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 				<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
-				<script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2Ces2016%2Ces2017%2Ces2018"></script>
+				<script crossOrigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2Ces2016%2Ces2017%2Ces2018"></script>
 			</Head>
 		</SigninAssistant></ApolloProvider>
 	</>
