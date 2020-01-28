@@ -1,6 +1,6 @@
 import { ApolloServer} from 'apollo-server-micro'
-import {schema as typeDefs} from '../../queries'
-
+import {schema as typeDefs} from '~/queries'
+import {getContext} from '~/lib/apollo' 
 import nedb from 'nedb'
 const datastore={}
 import resolvers from '~/lib/resolvers'
@@ -11,7 +11,8 @@ const apolloServer = new ApolloServer({ typeDefs, resolvers,formatError: error =
   formatResponse: response => {
     console.log(response);
     return response;
-  }, })
+  },
+  context:getContext })
 
 export const config = {
   api: {
