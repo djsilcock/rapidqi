@@ -6,8 +6,8 @@ import Head from 'next/head'
 import {SigninAssistant} from '../lib/signin'
 import TopNav from '../components/topnav.js'
 import {Grid} from 'semantic-ui-react'
-import { ApolloClient, HttpLink, InMemoryCache,ApolloProvider } from '../lib/apollo';
-import withApollo from 'next-with-apollo'
+import { withApollo,ApolloProvider } from '../lib/apollo';
+
 
 function MyApp ({ Component, pageProps,apollo}){
 	return (<>
@@ -33,12 +33,6 @@ function MyApp ({ Component, pageProps,apollo}){
 )
 }
 
- export default withApollo(
-   ({ ctx, headers, initialState }) =>
-     new ApolloClient({
-		 link:new HttpLink({uri: `${(ctx && ctx.req)?'http://localhost:3000':''}/api/graphql`}),
-		 ssrMode:!!(ctx && ctx.req),
-		 cache: new InMemoryCache().restore(initialState || {})
-     })
- )(MyApp)
+ export default withApollo(MyApp)
+   
 
