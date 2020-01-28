@@ -37,6 +37,7 @@
     "semantic-ui-calendar-react": "^0.14.4",
     "semantic-ui-react": "^0.86.0",
     "val-loader": "^2.1.0",
+	"wavy": "^1.0.4",
     "webpack": "^4.39.2",
     "yup": "^0.28.0"
   },
