@@ -12,7 +12,7 @@ const destinations={}
 function crawldir(sourcedir,destpath){
 	console.log('Directory:'+sourcedir)
 	fs.readdirSync(sourcedir).forEach((file)=>{
-		var keyName=lodash.camelCase(file.replace(/(^.+)\..+?$/,"$1"))
+		var keyName=lodash.snakeCase(file.replace(/(^.+)\..+?$/,"$1")).toUpperCase()
 		if (fs.statSync(path.resolve(sourcedir,file)).isDirectory()){
 			if (!fs.existsSync(path.resolve(destdir,file))) fs.mkdirSync(path.resolve(destdir,file))
 				crawldir(path.resolve(sourcedir,file),destpath.concat([keyName]))
@@ -30,20 +30,21 @@ function crawldir(sourcedir,destpath){
 	})
 }
 	
-function getSecret(secretName){
+function decrypt(secret){
 	const decryptionKey=process.env.DECRYPTION_KEY
 	const cipher=process.env.DECRYPTION_CIPHER  
 	var decrypter=require('crypto').createDecipher(cipher,Buffer.from(decryptionKey,'base64'))
-	var decrypted=decrypter.update(secrets[secretName],'base64','utf8')
+	var decrypted=decrypter.update(secret,'base64','utf8')
 	decrypted+=decrypter.final('utf8')
-	console.log('decrypted:'+decrypted)
+
 	return JSON.parse(decrypted)
 }	
 	
 crawldir (rootsourcedir,[])
 
 fs.writeFileSync(destfile,`secrets=${JSON.stringify(destinations)}
-	${getSecret.toString()}
-	module.exports= getSecret
+	${decrypt.toString()}
+	module.exports= lodash.mapValues(secrets,decrypt) 
+	
 	`)
 	
