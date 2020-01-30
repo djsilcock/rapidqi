@@ -1,6 +1,6 @@
 
 const path=require('path')
-require n BN
+require ('dotenv').config()
 lodash=require('lodash') 
 secrets=require('./vault)
 module.exports = {
