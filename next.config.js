@@ -1,10 +1,11 @@
 
 const path=require('path')
-require('dotenv').config()
-require('wavy/postinstall')
+require n BN
+lodash=require('lodash') 
 secrets=require('./vault)
 module.exports = {
   webpack: function (config,{defaultLoaders,isServer,webpack}) {
+        lodash.set(config,['resolve', 'alias', '~' ], __dirname)
         if (isServer) config.plugins.push(new webpack.DefinePlugin(secrets))
 	config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/))
 	config.module.rules.push({
