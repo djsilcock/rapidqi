@@ -12,7 +12,7 @@ const destinations={}
 function crawldir(sourcedir,destpath){
 	console.log('Directory:'+sourcedir)
 	fs.readdirSync(sourcedir).forEach((file)=>{
-		var keyName=lodash.snakeCase(file.replace(/(^.+)\..+?$/,"$1")).toUpperCase()
+		var keyName='process.env.'+lodash.snakeCase(file.replace(/(^.+)\..+?$/,"$1")).toUpperCase()
 		if (fs.statSync(path.resolve(sourcedir,file)).isDirectory()){
 			if (!fs.existsSync(path.resolve(destdir,file))) fs.mkdirSync(path.resolve(destdir,file))
 				crawldir(path.resolve(sourcedir,file),destpath.concat([keyName]))
@@ -37,7 +37,7 @@ function decrypt(secret){
 	var decrypted=decrypter.update(secret,'base64','utf8')
 	decrypted+=decrypter.final('utf8')
 
-	return JSON.parse(decrypted)
+	return decrypted
 }	
 	
 crawldir (rootsourcedir,[])
