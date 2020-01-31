@@ -2,7 +2,7 @@
 const path=require('path')
 require ('dotenv').config()
 lodash=require('lodash') 
-secrets=require('./vault)
+secrets=require('./vault')
 module.exports = {
   webpack: function (config,{defaultLoaders,isServer,webpack}) {
         lodash.set(config,['resolve', 'alias', '~' ], __dirname)
