@@ -36,7 +36,6 @@ function getSecret(secretName){
 	var decrypter=require('crypto').createDecipher(cipher,Buffer.from(decryptionKey,'base64'))
 	var decrypted=decrypter.update(secrets[secretName],'base64','utf8')
 	decrypted+=decrypter.final('utf8')
-	console.log('decrypted:'+decrypted)
 	return JSON.parse(decrypted)
 }	
 	

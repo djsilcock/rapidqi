@@ -1,7 +1,8 @@
 
 const path=require('path')
 require('dotenv').config()
-module.exports = {
+module.exports = 
+  env: {PROJECT_ROOT:path.resolve(__dirname)}
   webpack: function (config,{defaultLoaders,isServer,webpack}) {
 	config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/))
 	config.module.rules.push({
