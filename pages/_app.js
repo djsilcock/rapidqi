@@ -33,6 +33,6 @@ function MyApp ({ Component, pageProps,apollo}){
 )
 }
 
- export default withApollo(MyApp)
+export default withApollo(MyApp)
    
 

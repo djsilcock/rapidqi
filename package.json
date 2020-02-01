@@ -11,7 +11,7 @@
     "apollo-link": "^1.2.13",
     "apollo-link-error": "^1.1.12",
     "apollo-link-http": "^1.5.16",
-    "apollo-link-schema":"^1.2.4",
+    "apollo-link-schema": "^1.2.4",
     "apollo-server-micro": "^2.9.15",
     "babel-plugin-macros": "^2.8.0",
     "babel-plugin-preval": "^4.0.0",
@@ -23,19 +23,19 @@
     "formik": "^2.0.8",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
-	"graphql-tools": "^4.0.6",
+    "graphql-tools": "^4.0.6",
     "ifdef-loader": "^2.1.4",
     "immutable": "^4.0.0-rc.12",
     "nedb": "^1.8.0",
     "next": "^9.0.0",
     "next-redux-wrapper": "^3.0.0-alpha.2",
-    "next-with-apollo": "^4.3.0",
+    "next-with-apollo": "^5.0.0",
     "react": "^16.8.1",
     "react-datepicker": "^2.3.0",
     "react-dom": "^16.8.1",
-    "react-firebaseui": "^3.1.2",
+    "react-firebaseui": "^4.0.0",
     "semantic-ui-calendar-react": "^0.14.4",
-    "semantic-ui-react": "^0.86.0",
+    "semantic-ui-react": "^0.88.0",
     "val-loader": "^2.1.0",
     "wavy": "^1.0.4",
     "webpack": "^4.39.2",
@@ -57,7 +57,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint": "^5.15.3",
+    "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.12.4"
   }
 }
