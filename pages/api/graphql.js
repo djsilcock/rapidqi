@@ -1,18 +1,18 @@
 import { ApolloServer} from 'apollo-server-micro'
-import {schema as typeDefs} from '~/queries'
-import {getContext} from '~/lib/apollo' 
-import nedb from 'nedb'
-const datastore={}
-import resolvers from '~/lib/resolvers'
+import typeDefs from 'qiapp/queries/schema.gql'
+import getContext from 'qiapp/lib/apollo-context' 
+
+import resolvers from 'qiapp/lib/resolvers'
+
+
 const apolloServer = new ApolloServer({ typeDefs, resolvers,formatError: error => {
     console.log(error);
     return error;
   },
   formatResponse: response => {
-    console.log(response);
     return response;
   },
-  context:getContext })
+  context:getContext})
 
 export const config = {
   api: {

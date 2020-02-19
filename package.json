@@ -5,6 +5,7 @@
   "dependencies": {
     "@apollo/react-ssr": "^3.1.3",
     "@apollo/server": "^3.0.0-alpha.1",
+    "@next/bundle-analyzer": "^9.2.1",
     "@zeit/next-css": "^1.0.1",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "^2.6.8",
@@ -12,17 +13,17 @@
     "apollo-link-error": "^1.1.12",
     "apollo-link-http": "^1.5.16",
     "apollo-link-schema": "^1.2.4",
-    "apollo-server-micro": "^2.9.15",
+    "apollo-server-micro": "^2.10.0",
     "babel-plugin-macros": "^2.8.0",
     "babel-plugin-preval": "^4.0.0",
     "create-react-class": "^15.6.3",
     "dotenv": "^8.2.0",
-    "firebase": "^7.7.0",
+    "firebase": "^7.8.1",
     "firebase-admin": "^8.9.1",
     "firebase-tools": "^7.12.1",
-    "formik": "^2.0.8",
-    "graphql": "^14.5.8",
-    "graphql-tag": "^2.10.1",
+    "formik": "^2.1.4",
+    "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.3",
     "graphql-tools": "^4.0.6",
     "ifdef-loader": "^2.1.4",
     "immutable": "^4.0.0-rc.12",
@@ -31,14 +32,15 @@
     "next-redux-wrapper": "^3.0.0-alpha.2",
     "next-with-apollo": "^5.0.0",
     "react": "^16.8.1",
-    "react-datepicker": "^2.3.0",
+    "react-datepicker": "^2.12.1",
     "react-dom": "^16.8.1",
     "react-firebaseui": "^4.0.0",
+    "react-semantic-ui-datepickers": "^2.3.0",
     "semantic-ui-calendar-react": "^0.14.4",
     "semantic-ui-react": "^0.88.0",
     "val-loader": "^2.1.0",
     "wavy": "^1.0.4",
-    "webpack": "^4.39.2",
+    "webpack": "^4.41.6",
     "yup": "^0.28.0"
   },
   "scripts": {
@@ -57,7 +59,15 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-plugin-react": "^7.12.4"
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-config-react-app": "^5.2.0",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^1.7.0"
   }
 }

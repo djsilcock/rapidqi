@@ -7,7 +7,7 @@ import {SigninAssistant} from '../lib/signin'
 import TopNav from '../components/topnav.js'
 import {Grid} from 'semantic-ui-react'
 import { withApollo,ApolloProvider } from '../lib/apollo';
-
+import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
 
 function MyApp ({ Component, pageProps,apollo}){
 	return (<>

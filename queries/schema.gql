@@ -1,4 +1,5 @@
-
+	
+	
     enum YesNoPending{
         Yes
         No
@@ -42,6 +43,7 @@
 	}
 	
     type Project{
+		id:ID!
         title: String!
 		people:ProjectPeople
 	    description: String!
@@ -53,7 +55,10 @@
 	    mm_or_ci: Boolean
 	    caldicott: YesNoPending
 	    research: YesNoPending
-        candisplay: Date
+        canDisplay: YesNoPending
+		vetted: Boolean
+		lastUpdated: Date
+		lastUpdatedBy: ID
     }
 	
 	input UserInput{
@@ -77,23 +82,30 @@
 		title: String!
 	    people: ProjectPeopleInput
 	    description: String!
-	    propdate: Date!
 	    methodology: String!
 	    category: [ID]
-	    othertags: [String]
+	    othertags: String
 	    email: String
-	    advertise: Boolean
-	    mm_or_ci: Boolean
+	    advertise: YesNoPending
+	    mm_or_ci: YesNoPending
 	    caldicott: YesNoPending
 	    research: YesNoPending
-	    startdate: Date
-	    finishdate: Date
-        candisplay: Date
+		dates:ProjectDatesInput
+	    canDisplay: YesNoPending
 		}
+enum ListFilter{
+	all
+	needsVetting
+	needsLead
+	isRecruiting
+	isCompleted
+	hasIssues
+	recentlyUpdated
+}
 type Query {
     getLoggedInUser:User
     getProject(id:ID):Project
-    projectList:[Project]
+    projectList(filter:[ListFilter]):[Project]
     allUsers: [User!]!
     getUser(id:ID):User
 }

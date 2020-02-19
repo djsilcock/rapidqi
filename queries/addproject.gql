@@ -1,7 +1,7 @@
-    query getProjects{
-        projectList{
-			id
-            title
+mutation AddProject($project: ProjectInput!) {
+    addProject(project: $project) {
+        id
+        title
 			people{
 				leaders{
 					id
@@ -18,9 +18,9 @@
             category {
 				name
 				}
-            canDisplay
+            candisplay
             advertise
             caldicott
             research
-        }
     }
+  }

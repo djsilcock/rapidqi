@@ -11,24 +11,24 @@ import { PROJECT_LIST,CURRENT_USER } from '../queries';
 
 
 function generateLabels(doc,isAdmin) {
-	return immutable.OrderedMap().withMutations((labelset) => {
-		doc.category.forEach((categoryTag) => {
-			labelset.set(categoryTag, [taglist[categoryTag]])
-		})
-		if (doc.candisplay !== 'Yes') labelset.set('isinvisible', ['Private'])
-		if (doc.advertise === 'true') labelset.set('advertise', ['Looking for participants'])
-		if (doc.caldicott === 'pending') labelset.set("caldicott", ['Caldicott pending', 'orange'])
-		if (doc.research === 'pending') labelset.set("research", ["R+D pending", 'orange'])
-		if (doc.leadername.length === 0) labelset.set('needslead', ["Needs lead", 'red'])
-		if (isAdmin && doc.caldicott === 'Dontknow') labelset.set('caldicott', ["Might need Caldicott", 'red'])
-		if (isAdmin && doc.research === 'Dontknow') labelset.set('research', ["Might need R+D", 'red'])
-		if (doc.commit !== true) labelset.set("needsmoderated", ["Awaiting moderation", 'red'])
+	const labels=[]
+	doc.category.forEach((categoryTag) => {
+		labels.push({key:categoryTag, text:taglist[categoryTag]})
 	})
-}
-
-function getRowColour(labelset) {
-	const ranking = { red: 3, orange: 2, [undefined]: 1 }
-		.reduce((r, v) => (ranking[v[1]] > ranking[r] ? v[1] : r))
+	if (doc.candisplay !== 'Yes') labels.push({key:'isinvisible', text:'Private'})
+	if (doc.advertise === 'true') labels.push({key:'advertise', text:'Looking for participants'})
+	if (doc.caldicott === 'pending') labels.push({key:"caldicott", text:'Caldicott pending',color:'orange'})
+	if (doc.research === 'pending') labels.push({key:"research",text:"R+D pending", color:'orange'})
+	if (doc.leadername.length === 0) labels.push({key:'needslead', text:"Needs lead", color:'red'})
+	if (isAdmin && doc.caldicott === 'Dontknow') labels.push({key:'caldicott', text:"Might need Caldicott", color:'red'})
+	if (isAdmin && doc.research === 'Dontknow') labels.push({key:'research', text:"Might need R+D", color:'red'})
+	if (doc.commit !== true) labels.push({key:"needsmoderated", text:"Awaiting moderation", color:'red'})
+	const rowcolor=
+		labels.some((lab)=>(lab.color=="red"))?"red":
+		labels.some((lab)=>(lab.color=="orange"))?"orange":
+		labels.some((lab)=>(lab.color=="yellow"))?"yellow":
+		labels.some((lab)=>(lab.color=="blue"))?"blue":undefined
+	return [labels,rowcolor]
 }
 
 function DatabaseRow({doc, ...props}) {
@@ -121,15 +121,17 @@ function DatabaseRow({doc, ...props}) {
 
 
 function DatabaseTable(props) {
-	const {loading:docsloading,data:projects}=useQuery(PROJECT_LIST)
-	const {loading:userloading,data:currentuser}=useQuery(CURRENT_USER)
+	
 	
 	const [statusfilter, setstatusfilter] = React.useState('all')
-	const isAdmin = currentuser?currentuser.isAdmin:false
+	const {loading:docsloading,data:projects}=useQuery(PROJECT_LIST,{variables:{filter:[statusfilter]}})
+	const {loading:userloading,data:currentuser}=useQuery(CURRENT_USER)
+	const isAdmin = !!currentuser?.isAdmin
 
 
-	if (!currentuser) return "Waiting for user"
-	if (!projects) return "Waiting for database"
+	if (userloading) return "Waiting for user"
+	if (docsloading) return "Waiting for database"
+	
 	var listitems = projects.projectList.filter(
 		(doc) => {
 			switch (statusfilter) {
@@ -146,7 +148,7 @@ function DatabaseTable(props) {
 			(doc) => {
 				return (<DatabaseRow doc={doc} visible={props.match && props.match.params === doc.id} key={doc.id} />)
 			});
-
+		const table=(listitems.length===0)?<p>Sorry, nothing to show here</p>:<Table celled selectable id="accordion-example"><Table.Body>{listitems}</Table.Body></Table>
 	return (<div className="App">
 		<Head>
 			<title>People Make QI</title>
@@ -154,13 +156,13 @@ function DatabaseTable(props) {
 
 		<Menu tabular>
 			<Menu.Item active={statusfilter === "all"} onClick={() => setstatusfilter('all')}>All</Menu.Item>
-			<Menu.Item active={statusfilter === "needslead"} onClick={() => setstatusfilter('needslead')}>Needs lead</Menu.Item>
-			<Menu.Item active={statusfilter === "recruiting"} onClick={() => setstatusfilter('recruiting')}>Looking for collaborators</Menu.Item>
-			<Menu.Item active={statusfilter === "recentupdate"} onClick={() => setstatusfilter('recentupdate')}>Recently Updated</Menu.Item>
-			<Menu.Item active={statusfilter === "complete"} onClick={() => setstatusfilter('complete')}>Completed</Menu.Item>
+			<Menu.Item active={statusfilter === "needsLead"} onClick={() => setstatusfilter('needsLead')}>Needs lead</Menu.Item>
+			<Menu.Item active={statusfilter === "isRecruiting"} onClick={() => setstatusfilter('isRecruiting')}>Looking for collaborators</Menu.Item>
+			<Menu.Item active={statusfilter === "recentlyUpdated"} onClick={() => setstatusfilter('recentlyUpdated')}>Recently Updated</Menu.Item>
+			<Menu.Item active={statusfilter === "isCompleted"} onClick={() => setstatusfilter('isCompleted')}>Completed</Menu.Item>
 		</Menu>
 
-		<Table celled selectable id="accordion-example"><Table.Body>{listitems}</Table.Body></Table>
+		{table}
 	</div>)
 }
 

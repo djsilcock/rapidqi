@@ -1,12 +1,17 @@
-
-const path=require('path')
+/* eslint-env node */
 require ('dotenv').config()
-lodash=require('lodash') 
-secrets=require('./vault')
-module.exports = {
+process.env.ROOT_DIR=__dirname
+const lodash=require('lodash') 
+const secrets=require('./vault')
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+module.exports = withBundleAnalyzer({
   webpack: function (config,{defaultLoaders,isServer,webpack}) {
-        lodash.set(config,['resolve', 'alias', '~' ], __dirname)
-        if (isServer) config.plugins.push(new webpack.DefinePlugin(secrets))
+        lodash.set(config,['resolve', 'alias', 'qiapp' ], __dirname)
+        if (isServer) {
+          config.plugins.push(new webpack.DefinePlugin(secrets))
+        }
 	config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/))
 	config.module.rules.push({
       test: /\.ifdef\.js/,
@@ -32,28 +37,7 @@ module.exports = {
           options: {isServer},
         },
       ],
-    })
-	config.module.rules.push({
-      test: /\.encrypted.js$/,
-      use: [
-        defaultLoaders.babel,
-        {
-          loader: path.resolve('./lib/vault'),
-          options: {isServer},
-        },
-      ],
-    })
-	config.module.rules.push({
-      test: /\.encrypted.json$/,
-      use: [
-        'json-loader',
-        {
-          loader: path.resolve('./lib/vault'),
-          options: {isServer},
-        },
-      ],
-    })
-	  
+    }) 
     return config
   }
-}
+})

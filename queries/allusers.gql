@@ -1,0 +1,10 @@
+    query allUsers{
+        allUsers{
+            id
+            userName
+            realName
+            email
+            category
+            isAdmin
+        }
+    }

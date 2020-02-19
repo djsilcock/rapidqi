@@ -1,13 +1,11 @@
 import React from 'react';
-import {useCurrentUser,useAdminUser,signout} from '../lib/signin'
+import {useCurrentUser,signout} from '../lib/signin'
 import Link from 'next/link'
 import {Menu,Icon} from 'semantic-ui-react'
-import Router from 'next/router'
 
 function TopNav (props){
-	const user=useCurrentUser()
-	const isAdmin=useAdminUser()
-  const loginbutton=(!user || user.isAnonymous)?(
+	const [user,isAdmin]=useCurrentUser()
+	const loginbutton=(!user || user.isAnonymous)?(
 		<Link href="/signin" passHref>
 		<Menu.Item>Login 
 				<Icon name='sign-in'/> 
@@ -19,7 +17,7 @@ function TopNav (props){
 		<Menu.Item onClick={()=>{signout()}}> 	
 				<span>
 					<Icon name='sign-out'/>
-				Logout {user.displayName}{isAdmin?'(admin)':''}
+				Logout {user.realName} {isAdmin?'(admin)':''}
 				</span>
 			
 		</Menu.Item>
