@@ -252,16 +252,19 @@ const addProjectForm = [
 function ProjectInfoForm(){
 	//const user=useCurrentUser()
 	//const isAdmin=useAdminUser()	
-	var initialvalues=undefined
+	
 	const router=useRouter()
 	const apolloclient=useApolloClient()
-	const formdef=addProjectForm
-	const formref=useRef()
 	const {data:usersquery}=useQuery(allUsersQuery)
+
+	const formref=useRef()
+	const isCompleted=useRef(false)
+
 	const staffnames=useMemo(()=>(
 		usersquery?.allUsers?.map((s)=>({key:s.id,value:s.id,text:s.realName,description:s.category}))
 				.concat(formref.current?.values.people.added ?? []) ?? []
 	),[usersquery])
+	
 	useEffect(()=>{
 		if (!formref.current) return
 		const status=formref.current.status
@@ -269,11 +272,17 @@ function ProjectInfoForm(){
 			...status,
 			staffnames,
 			}
-		formref.current.setStatus(newstatus)
-		
+		formref.current.setStatus(newstatus)	
 	},[staffnames])
+
+	useEffect(()=>{
+		if (isCompleted.current) router.push('/')
+	})
+	
+	const formdef=addProjectForm
 	const initialStatus={staffnames}
-	var isCompleted=useRef(false)
+	var initialvalues=undefined
+
 	const handleSubmit=async (values)=>{
 		await apolloclient.mutate({mutation:addProjectQuery,variables:{project:values}})
 		router.push('/')
@@ -281,9 +290,7 @@ function ProjectInfoForm(){
 	const handleClose=()=>{
 		isCompleted.current=true
 	}
-	useEffect(()=>{
-		if (isCompleted.current) router.push('/')
-	})
+	
 	
 	
 	return (<div>
