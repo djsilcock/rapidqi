@@ -1,11 +1,11 @@
-import { ApolloServer} from 'apollo-server-micro'
+import { ApolloServer, makeExecutableSchema} from 'apollo-server-micro'
 import typeDefs from 'qiapp/queries/schema.gql'
 import getContext from 'qiapp/lib/apollo-context' 
 
 import resolvers from 'qiapp/lib/resolvers'
 
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers,formatError: error => {
+const apolloServer = new ApolloServer({schema:makeExecutableSchema({ typeDefs, resolvers}),formatError: error => {
     console.log(error);
     return error;
   },
