@@ -20,6 +20,7 @@
 
     type User{
         id:ID
+		rev:ID
         userName:String
         realName:String
         email:String
@@ -44,6 +45,7 @@
 	
     type Project{
 		id:ID!
+		rev:ID!
         title: String!
 		people:ProjectPeople
 	    description: String!
@@ -51,18 +53,14 @@
 	    methodology: String!
 	    category: [Category]
 	    email: String
-	    advertise: Boolean
-	    mm_or_ci: Boolean
-	    caldicott: YesNoPending
-	    research: YesNoPending
-        canDisplay: YesNoPending
-		vetted: Boolean
 		lastUpdated: Date
-		lastUpdatedBy: ID
+		lastUpdatedBy: User
+		flags:[Flag]
     }
 	
 	input UserInput{
         id:ID
+		rev:ID
         realName:String
         email:String
         category:StaffType
@@ -79,6 +77,8 @@
 		finish: Date
 	}
 	input ProjectInput{
+		id:ID
+		rev:ID
 		title: String!
 	    people: ProjectPeopleInput
 	    description: String!
@@ -92,24 +92,38 @@
 	    research: YesNoPending
 		dates:ProjectDatesInput
 	    canDisplay: YesNoPending
+		
 		}
-enum ListFilter{
-	all
+enum Flag{
 	needsVetting
 	needsLead
 	isRecruiting
 	isCompleted
-	hasIssues
+	hasCaldicott
+	hasResearch
+	maybeCaldicott
+	maybeResearch
+	pendingCaldicott
+	pendingResearch
+	notCaldicott
+	notResearch
+	criticalIncident
+	canDisplay
+	
 	recentlyUpdated
+	all
 }
+
 type Query {
     getLoggedInUser:User
     getProject(id:ID):Project
-    projectList(filter:[ListFilter]):[Project]
+    projectList(filter:[Flag]):[Project]
     allUsers: [User!]!
     getUser(id:ID):User
 }
 
 type Mutation {
 	addProject(project:ProjectInput):Project
+	addUser(user:UserInput):User
+	updateUser(user:UserInput):User
 }

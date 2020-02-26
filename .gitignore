@@ -3,5 +3,7 @@ node_modules
 credentials.json
 .env
 *.nedb
+mydb
+newdb
 db
 secrets
