@@ -18,9 +18,6 @@ mutation AddProject($project: ProjectInput!) {
             category {
 				name
 				}
-            candisplay
-            advertise
-            caldicott
-            research
+            flags
     }
   }

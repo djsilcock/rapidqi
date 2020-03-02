@@ -1,8 +1,7 @@
-    query getProjects{
-        projectList{
-			id
-			rev
-            title
+query getProject($id: ID) {
+    getProject(id: $id) {
+        id
+        title
 			people{
 				leaders{
 					id
@@ -19,7 +18,6 @@
             category {
 				name
 				}
-			flags
-            
-        }
+            flags
     }
+  }
