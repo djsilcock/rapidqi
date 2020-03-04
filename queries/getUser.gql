@@ -1,5 +1,5 @@
-    query currentuser{
-        getLoggedInUser{
+    query getuser($id:ID){
+        getUser(id:$id){
                 id
                 userName
                 realName

@@ -1,5 +1,5 @@
 import got from 'got'
-import categories from './lib/taglist'
+import categories from '../lib/taglist'
 import { sample, sampleSize } from 'lodash'
 import { createHash } from 'crypto'
 
@@ -41,7 +41,7 @@ function makeFakeProject(lipsum, allusers) {
         new Date(Date.now() + 15000000000 - (Math.random() * 31536000000)).toISOString()
     ]).sort()
     const cats = Object.keys(categories)
-    const flags = [sample('needsVetting', null),
+    const flags = [sample(['needsVetting', null]),
     needslead ? 'needsLead' : null,
     Math.random() > 0.6 ? 'isRecruiting' : null,
     dates[3] < new Date().toISOString() ? 'isCompleted' : null,

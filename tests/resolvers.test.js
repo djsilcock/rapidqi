@@ -1,9 +1,9 @@
 /*eslint-env jest,node  */
 
-import resolvers from './resolvers'
+import resolvers from '../lib/resolvers'
 import PouchDB from 'pouchdb'
 import * as pouchfind from 'pouchdb-find'
-import populateDB from '../populate_test_db'
+import populateDB from './populate_test_db'
 PouchDB.plugin(pouchfind);
 const database = new PouchDB('testdatabase')
 
@@ -16,17 +16,38 @@ import fs from 'fs'
 import gql from 'graphql-tag'
 const typeDefs = gql(fs.readFileSync(path.resolve(__dirname, '../queries/schema.gql'), { encoding: 'utf8' }))
 
+var someuserid,someprojectid
+
+
 const client = new ApolloClient({
   link: new SchemaLink({
-    context: () => ({ database, currentuser: { id:'user 1',isAdmin: true } }),
+    context: () => ({ database, currentuser: { id:someuserid,isAdmin: false } }),
     schema: makeExecutableSchema({ typeDefs, resolvers })
   }),
   ssrMode: true,
   cache: new InMemoryCache()
 })
+const adminclient = new ApolloClient({
+  link: new SchemaLink({
+    context: () => ({ database, currentuser: { id:someuserid,isAdmin: true } }),
+    schema: makeExecutableSchema({ typeDefs, resolvers })
+  }),
+  ssrMode: true,
+  cache: new InMemoryCache()
+})
+
+
 beforeAll(async ()=>{
   const docs=await database.allDocs()
   if (docs.rows.length==0) await populateDB(database,{users:20,admins:2,projects:100})
+  await Promise.all([database.allDocs({startkey:'user ',endkey:'user!',limit:1})
+    .then((r)=>{
+      someuserid=r.rows[0].id
+    }),
+  database.allDocs({startkey:'project ',endkey:'project!',limit:1})
+    .then((r)=>{
+      someprojectid=r.rows[0].id
+    })])
   return
 })
 
@@ -51,18 +72,36 @@ function getProject(parent, { id }, { database }) {
 }
  */
 describe('Getting a single project', () => {
-  const testid="project k79lgwan.wfj"
   test('works with resolver', async () => {
-    const result= await resolvers.Query.getProject({}, { id: testid }, { database, currentuser: { isAdmin: true } })
+    const result= await resolvers.Query.getProject({}, { id: someprojectid }, { database, currentuser: { id:someuserid,isAdmin: true } })
     expect(result).toHaveProperty('id')
   })
 
   test('works with query', async () => {
     const query = gql(fs.readFileSync(path.resolve(__dirname, '../queries/getProject.gql'), { encoding: 'utf8' }))
-    const result = await client.query({ query,variables:{id:testid} })
+    const result = await client.query({ query,variables:{id:someprojectid} })
     expect(result).toHaveProperty('data')
   })
 })
+
+describe('Getting a single user', () => {
+  test('works with resolver', async () => {
+    const result= await resolvers.Query.getProject({}, { id: someuserid }, { database, currentuser: { id:someuserid,isAdmin: true } })
+    expect(result).toHaveProperty('id')
+  })
+
+  test('works with query', async () => {
+    const query = gql(fs.readFileSync(path.resolve(__dirname, '../queries/getUser.gql'), { encoding: 'utf8' }))
+    const result = await client.query({ query,variables:{id:someuserid} })
+    expect(result).toHaveProperty('data')
+  })
+  test('works with logged-in user', async () => {
+    const query = gql(fs.readFileSync(path.resolve(__dirname, '../queries/currentuser.gql'), { encoding: 'utf8' }))
+    const result = await client.query({ query})
+    expect(result).toHaveProperty('data')
+  })
+})
+
 
 describe('Returning list of projects', () => {
   test('works with resolver', async () => {
@@ -74,6 +113,23 @@ describe('Returning list of projects', () => {
     const result = await client.query({ query })
     expect(result).toHaveProperty('data')
   })
+
+  test('admin users should be able to see unvetted projects',async ()=>{
+    const query = gql(fs.readFileSync(path.resolve(__dirname, '../queries/projectlist.gql'), { encoding: 'utf8' }))
+    const result = await adminclient.query({ query })
+    expect(result).toHaveProperty('data')
+    expect(result.data.projectList.filter((project)=>(project.flags.includes('needsVetting')))).not.toHaveLength(0)
+
+  })
+
+  test('normal users should not be able to see unvetted projects',async ()=>{
+    const query = gql(fs.readFileSync(path.resolve(__dirname, '../queries/projectlist.gql'), { encoding: 'utf8' }))
+    const result = await client.query({ query })
+    expect(result).toHaveProperty('data')
+    expect(result.data.projectList.filter((project)=>(project.flags.includes('needsVetting')))).toHaveLength(0)
+
+  })
+  
 })
 
 /* 
@@ -141,7 +197,18 @@ describe('Adding project to database', () => {
     expect(dbcheck).toBeDefined()
     expect(dbcheck).toHaveProperty('realName','Real Name')
   })
-  
+  test('normal users should require their projects to be vetted',async ()=>{
+    const mutation = gql(fs.readFileSync(path.resolve(__dirname, '../queries/addproject.gql'), { encoding: 'utf8' }))
+    const result = await client.mutate({ mutation, variables: { project }})
+    expect(result).toHaveProperty('data')
+    expect(result.data.addProject.flags).toEqual(expect.arrayContaining(['needsVetting']))
+  })
+  test('admin users should not require their projects to be vetted',async ()=>{
+    const mutation = gql(fs.readFileSync(path.resolve(__dirname, '../queries/addproject.gql'), { encoding: 'utf8' }))
+    const result = await adminclient.mutate({ mutation, variables: { project }})
+    expect(result).toHaveProperty('data')
+    expect(result.data.addProject.flags).not.toEqual(expect.arrayContaining(['needsVetting']))
+  })
 })
 /*
 async function updateUser(parent, { user }, { database }, info) {
