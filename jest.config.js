@@ -1,3 +1,4 @@
+/*eslint-env node*/
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
 
@@ -79,7 +80,10 @@ module.exports = {
   // ],
 
   // A map from regular expressions to module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+     moduleNameMapper: {
+      "^qiapp/(.*)$": "<rootDir>/$1",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+     },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -168,7 +172,10 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   // transform: undefined,
-
+  transform:{
+    "^.+\\.js$": "babel-jest",
+    "\\.(graphql|gql)$":"./lib/jest-graphql-loader"
+  }
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
   //   "/node_modules/"

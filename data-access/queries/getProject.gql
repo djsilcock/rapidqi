@@ -1,0 +1,23 @@
+query getProject($id: ID) {
+    getProject(id: $id) {
+        id
+        title
+			people{
+				leaders{
+					id
+					realName
+					userName
+				}
+				involved{
+					id
+					realName
+					userName
+				}
+				}
+            description
+            category {
+				name
+				}
+            flags
+    }
+  }

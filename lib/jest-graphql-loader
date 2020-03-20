@@ -1,0 +1,8 @@
+const loader=require('graphql-tag/loader')
+module.exports={
+    process(src){
+        const fakeWebpackContext={
+            cacheable(){return true}
+        }
+        return loader.call(fakeWebpackContext,src)
+        }}

@@ -32,7 +32,7 @@ function MyApp ({ Component, pageProps,apollo}){
 	</>
 )
 }
-
+export {MyApp as BareApp}
 export default withApollo(MyApp)
    
 

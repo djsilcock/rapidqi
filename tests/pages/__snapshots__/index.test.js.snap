@@ -1,0 +1,3501 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index page should display without crashing 1`] = `
+<div>
+  <div>
+    <div
+      class="ui inverted stackable menu"
+    >
+      <a
+        class="header item"
+        href="/"
+      >
+        QEUH QI Portal
+      </a>
+      <a
+        class="item"
+      >
+         
+        <i
+          aria-hidden="true"
+          class="thumbs up icon"
+        />
+        Propose Project 
+      </a>
+      <a
+        class="item"
+        href="/projects"
+      >
+        <i
+          aria-hidden="true"
+          class="list icon"
+        />
+        Projects
+      </a>
+      <a
+        class="item"
+      >
+        <span>
+          <i
+            aria-hidden="true"
+            class="sign-out icon"
+          />
+          Logout 
+          Raul Banks
+           
+          (admin)
+        </span>
+      </a>
+    </div>
+    <div
+      class="ui grid"
+    >
+      <div
+        class="one wide column"
+      />
+      <div
+        class="fourteen wide column"
+      >
+        <div
+          class="App"
+        >
+          <div
+            class="ui tabular menu"
+          >
+            <a
+              class="active item"
+            >
+              All
+            </a>
+            <a
+              class="item"
+            >
+              Needs lead
+            </a>
+            <a
+              class="item"
+            >
+              Looking for collaborators
+            </a>
+            <a
+              class="item"
+            >
+              Recently Updated
+            </a>
+            <a
+              class="item"
+            >
+              Completed
+            </a>
+          </div>
+          <table
+            class="ui celled selectable table"
+            id="accordion-example"
+          >
+            <tbody
+              class=""
+            >
+              <tr
+                class=""
+                color="red"
+                id="project 006acfab4a080419ec856fc68e636c7c"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    In euismod cursus nibh, et
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 00f4a2fb7c30a535f06a2f0ea0760b37"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Donec et mi fermentum, accumsan
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="orange"
+                id="project 04677a1e5296964a604b46ebd2de1689"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Mauris egestas, ligula ut auctor
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="IG pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 06c0afd33d74c417ef51b8e91b3313a0"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Aliquam orci neque, consequat at
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="IG pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 07ae879966a433b1ada017e16fbd84f1"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Vestibulum aliquam ac mi eu
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 0d1b01912ad77cd0a7450356ac30066b"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Proin tempor sed ante id
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                id="project 14219e205bb07d8f153dc07811f57cf9"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Vestibulum facilisis quis ligula nec
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="orange"
+                id="project 18e1c8795d046708077855967e558216"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Curabitur placerat hendrerit nulla et
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="orange"
+                id="project 1ea8b4892efcda949af53b84e969fde6"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Sed rhoncus tristique nibh quis
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="IG pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="blue"
+                id="project 2219528992dccfdd4dfbfeff6d110dff"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Maecenas malesuada dui vel velit
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Information Governance approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="blue"
+                id="project 27db6803e5ddcab0d5b52862c1c7f052"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Vivamus mattis lectus suscipit nibh
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 291b40802103c82409ca5bcf298a647f"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    In metus massa, mattis a
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="IG pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                id="project 2a877cbb0d761974ac079d91075e493f"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Phasellus at auctor sem, vitae
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 3590b07333cb8a1e336978a5ebdce988"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Curabitur vel nunc sed neque
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                id="project 35ba3fed1529e8e3dd522495785d9757"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Cras gravida molestie eros, a
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 36064a059ae048d83222769cad86a0d6"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Cras vel nulla id lorem
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                id="project 37192d495eb95a6632346c699142c1f4"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Sed ultricies diam at bibendum
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 4abdf7a12b45935089694d8adec98dc7"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Aliquam tristique enim ac gravida
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 4b411b86ab4313e66bfb1cceed8eb839"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Cras in nisi aliquet, imperdiet
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="IG pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="blue"
+                id="project 4eec85cc9e124587af1fe51332ddce37"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Etiam mattis tellus et quam
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="R+D approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 5fd3bdc1d8a9f291a6413c0bf0d1ca22"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Suspendisse rutrum fringilla elit, ut
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="blue"
+                id="project 6072d41805f61ca2ff9bda3eeaf31d9e"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Fusce urna velit, auctor id
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                id="project 63057003a7e494c66c4d84405f2369fb"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Nulla eu nulla pellentesque, euismod
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 6586cabf710c83219d34ba7067f05d3d"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Nam at gravida nulla. Suspendisse
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="IG pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 6662cab214c7b9f56da2dff481513c6e"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Phasellus vel molestie elit. Proin
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                id="project 6bbfcd30ad5fbf4072535d9dad34d37a"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Pellentesque ac quam et risus
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="orange"
+                id="project 730604e12ee4f68e200bd83aab5d5087"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Nam cursus ultricies mauris. Nam
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="IG pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="orange"
+                id="project 7e176d290547ae49fb1b41b25aef9ac9"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Lorem ipsum dolor sit amet,
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="IG pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 90eb73feb36d196bfb792e9397da7922"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Sed et dignissim erat. Phasellus
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 9798639dc98c62a8e962e3d8695f06f1"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Donec nunc nisi, auctor eu
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                id="project 980803279b1a51916805786b239b0671"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Proin sed lacus vulputate nibh
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 9aac5457b9d68a60abbdf110a2be8ca8"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Curabitur sit amet pellentesque augue.
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project 9dfcaf239e377d5dacd022812b0389cc"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Morbi feugiat ipsum eros, ut
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="IG pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="blue"
+                id="project a47bdb0bc73977a6fd1b7f75427d02d4"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Suspendisse sit amet maximus metus.
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project a5d031b56b0433168740c2d3e81f335b"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Maecenas at vestibulum lacus. Nulla
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="orange"
+                id="project b18976d2619b7bd1d4bb10a73e3b9bfa"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Donec aliquet massa at sollicitudin
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="IG pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project b2b45ffcadef0dd7245379a9069a0171"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    In cursus, libero non lobortis
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="IG pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project b6e44e726ce3496bce37dcf2e492676f"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Curabitur ut metus turpis. Nam
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project beb367b627adb39ea5d7d324d36c45ca"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Praesent iaculis eget ex vel
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project c218a4327fc375e55b678ff68ef159d2"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Nulla luctus sapien vitae enim
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project c435127d7e29430eadb7e759ad233ea7"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Aenean ante erat, placerat vel
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project c9c33831463a1477e8fa0caabcea0770"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Praesent vel ex quis erat
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="IG pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project cefdcb500f96384ef7e76c22ce89a048"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Nulla rhoncus nibh eleifend sem
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="orange"
+                id="project e4f4d6e92f639f1c7c0b8aa45abaff67"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Ut pellentesque ultricies dolor, quis
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                id="project e525bb5c8688371702f02aa4924047e7"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Aenean porttitor urna vitae faucibus
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project e62e46bcb1d8c05d158c064f5d1ee45f"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Vivamus orci ex, consequat quis
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="orange"
+                id="project ebd906b4a86a187526a3391ac478e272"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Curabitur risus arcu, cursus a
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="IG pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project f42c2c5d8c81af030d7517be61a0d663"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Fusce id magna non dolor
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval not required"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project f6fc3c36a26f4cb17d2fb4c2ca336e3d"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Quisque placerat libero massa, eget
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="IG pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="blue"
+                id="project fa95634490a86b8e6846c5ab9505edf1"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Mauris vehicula ex nibh, feugiat
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Looking for participants"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Recruiting
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Completed"
+                    >
+                      <div
+                        class="ui grey label"
+                      >
+                        Completed
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+              <tr
+                class=""
+                color="red"
+                id="project fd2f91e154543fe9220fd220b30d3945"
+              >
+                <td
+                  class=""
+                >
+                  <div
+                    class="ui header"
+                  >
+                    Aenean vulputate diam eu nisl
+                  </div>
+                  <span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span>
+                      <div
+                        class="ui grey label"
+                      />
+                       
+                    </span>
+                    <span
+                      title="Does not yet have a leader"
+                    >
+                      <div
+                        class="ui red label"
+                      >
+                        Need leader
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="Information Governance approved"
+                    >
+                      <div
+                        class="ui green label"
+                      >
+                        IG
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="R+D approval pending"
+                    >
+                      <div
+                        class="ui orange label"
+                      >
+                        R+D
+                      </div>
+                       
+                    </span>
+                    <span
+                      title="relates to a previous incident or M+M"
+                    >
+                      <div
+                        class="ui blue label"
+                      >
+                        CI
+                      </div>
+                       
+                    </span>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div
+        class="one wide column"
+      />
+    </div>
+  </div>
+</div>
+`;
