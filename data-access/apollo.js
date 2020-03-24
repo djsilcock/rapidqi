@@ -1,6 +1,11 @@
-function getServerContext({ req, res }) {
-  return { req, res };
-}
+import { SchemaLink } from "apollo-link-schema";
+import { makeExecutableSchema } from "graphql-tools";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { ApolloClient } from "apollo-client";
+import { schema } from "qiapp/queries";
+import resolverMap from "../lib/resolvers";
+
+export { ApolloClient, InMemoryCache };
 
 import PouchDB from "pouchdb";
 import * as relpouch from "relational-pouch";
@@ -10,10 +15,15 @@ PouchDB.plugin(relpouch);
 PouchDB.plugin(pouchfind);
 
 const dbname = "database";
-export function getDBContext(ctx) {
+function getServerContext({ req, res }) {
+  return { req, res };
+}
+
+function getDBContext() {
   return { database: new PouchDB(dbname) };
 }
-export function getAuthContext({ req, res }) {
+
+function getAuthContext({ req, res }) {
   const keys = ["mysupersecretkey"];
   const cookies = new Cookies(req, res, { keys });
   return {
@@ -33,7 +43,8 @@ export function getAuthContext({ req, res }) {
     }
   };
 }
-export default function getContext(ctx) {
+
+function getContext(ctx) {
   if (process.env.NODE_ENV == "test" && ctx.override_ctx)
     return ctx.override_ctx;
   return Object.assign(
@@ -42,4 +53,14 @@ export default function getContext(ctx) {
     getDBContext(ctx),
     getAuthContext(ctx)
   );
+}
+
+export default function getClient(ctx) {
+  return new ApolloClient({
+    link: new SchemaLink({
+      context: getContext(ctx),
+      schema: makeExecutableSchema({ typeDefs: schema, resolvers: resolverMap })
+    }),
+    cache: new InMemoryCache()
+  });
 }

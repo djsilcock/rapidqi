@@ -83,7 +83,7 @@ type Event {
   suggestions: String!
   actionPoints: [ActionPoint]
   dates: ProjectDates
-  description: String!
+  methodology: String!
   category: [Category]
   email: String
   lastUpdated: Date
@@ -117,7 +117,7 @@ input EventInput {
   suggestions: String!
   actionPoints: [ActionPointInput]
   dates: ProjectDates
-  description: String!
+  methodology: String!
   category: [Category]
   email: String
   lastUpdated: Date

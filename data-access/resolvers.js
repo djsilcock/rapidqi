@@ -55,7 +55,98 @@ async function allUsers(parent, args, { database }) {
   });
   return users.rows.map(d => deserialize(d.doc));
 }
+/*input EventInput {
+  id: ID!
+  rev: ID!
+  title: String!
+  people: ProjectPeople
+  eventDate: Date
+  triumphs: String!
+  challenges: String!
+  suggestions: String!
+  actionPoints: [ActionPointInput]
+  dates: ProjectDates
+  description: String!
+  category: [Category]
+  email: String
+  lastUpdated: Date
+  lastUpdatedBy: User
+  flags: [Flag]
+}*/
+async function addEvent(
+  parent,
+  { project },
+  { database, currentUserId, currentUserIsAdmin },
+  info
+) {
+  const newproject = pick(project, [
+    "title",
+    "description",
+    "eventDate",
+    "methodology",
+    "category",
+    "email",
+    "triumphs",
+    "challenges",
+    "suggestions"
+  ]);
 
+  newproject.lastUpdatedBy = currentUserId;
+  newproject.isVetted = !!currentUserIsAdmin;
+  newproject.lastUpdated = new Date().toISOString();
+  newproject.flags = Object.keys(
+    pickBy({
+      //needsVetting: !currentUserIsAdmin,
+      //needsLead: !project.people.leaders.length,
+      //isRecruiting: project.advertise,
+      //isCompleted: project.dates.finish < new Date().toISOString(),
+      //hasCaldicott: project.caldicott == "Yes",
+      //hasResearch: project.research == "Yes",
+      //maybeCaldicott: project.caldicott == "DontKnow",
+      //maybeResearch: project.research == "DontKnow",
+      //pendingCaldicott: project.caldicott == "Pending",
+      //pendingResearch: project.research == "Pending",
+      //notCaldicott: (project.caldicott = "No"),
+      //notResearch: (project.research = "No"),
+      //criticalIncident: project.mm_or_ci == "Yes",
+      //canDisplay: project.candisplay == "Yes"
+    })
+  );
+
+  const newrecords = [];
+  const newpeople = fromPairs(
+    (get(project, "people.new") ?? []).map(
+      ({ id, realName, email, category }) => {
+        const _id = generateId("user");
+        newrecords.push({ _id, realName, email, category });
+        return [id, _id];
+      }
+    )
+  );
+  newproject.people = {};
+
+  for (let peopletype of ["proposers", "leaders", "involved"]) {
+    newproject.people[peopletype] = get(
+      project,
+      ["people", peopletype],
+      []
+    ).map(personid => get(newpeople, personid, personid));
+  }
+
+  newproject.id = (project.id ?? "").startsWith("user ")
+    ? project.id
+    : generateId("project");
+  if (project.rev) newproject.rev = project.rev;
+
+  newrecords.push(serialize(newproject));
+  await database.bulkDocs(newrecords);
+  return getProject(
+    {},
+    { id: newproject.id },
+    { database, currentUserId, currentUserIsAdmin },
+    info
+  );
+}
 async function addProject(
   parent,
   { project },

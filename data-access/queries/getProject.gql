@@ -1,5 +1,28 @@
-query getProject($id: ID) {
-    getProject(id: $id) {
+query getEvent($id: ID) {
+    getEvent(id: $id) {
+
+  id
+  rev
+  title
+  people: ProjectPeople
+  type ProjectPeople {
+  proposers: [User]
+  leaders: [User]
+  involved: [User]
+}
+  eventDate: Date
+  triumphs: String!
+  challenges: String!
+  suggestions: String!
+  actionPoints: [ActionPoint]
+  dates: ProjectDates
+  description: String!
+  category: [Category]
+  email: String
+  lastUpdated: Date
+  lastUpdatedBy: User
+  flags: [Flag]
+}
         id
         title
 			people{
