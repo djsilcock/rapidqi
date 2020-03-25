@@ -14,7 +14,6 @@ const generateId = kind =>
   kind + " " + (Date.now() + Math.random()).toString(36);
 
 function getLoggedInUser(parent, args, { database, currentUserId }, info) {
-  //(parent,args,ctx,info)
   if (!currentUserId) return null;
   return database.get(currentUserId).then(deserialize);
 }
@@ -55,24 +54,6 @@ async function allUsers(parent, args, { database }) {
   });
   return users.rows.map(d => deserialize(d.doc));
 }
-/*input EventInput {
-  id: ID!
-  rev: ID!
-  title: String!
-  people: ProjectPeople
-  eventDate: Date
-  triumphs: String!
-  challenges: String!
-  suggestions: String!
-  actionPoints: [ActionPointInput]
-  dates: ProjectDates
-  description: String!
-  category: [Category]
-  email: String
-  lastUpdated: Date
-  lastUpdatedBy: User
-  flags: [Flag]
-}*/
 async function addEvent(
   parent,
   { project },
@@ -235,6 +216,11 @@ async function addUser(parent, { user }, { database }, info) {
   );
 }
 
+async function getCategories(){
+  const categories=await import("./taglist")
+  return Object.entries(categories).map(([id,name])=>({id,name}))
+}
+
 async function getCategory(parent, args, { database }, { fieldName }) {
   const categories = await import("./taglist");
   const fetchList = parent[fieldName];
@@ -267,10 +253,11 @@ const resolvers = {
     getProject,
     projectList,
     getUser,
-    allUsers
+    allUsers,
+    getCategories
   },
   Mutation: {
-    addProject,
+    addEvent,
     addUser,
     updateUser
   },

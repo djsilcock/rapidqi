@@ -1,8 +1,6 @@
-import allUsers from "../../../../data-access/queries/allUsers.gql";
-import getClient from "../../../../data-access/apollo";
+import getAllUsers from "../../../../data-access/getAllUsers";
 
 export default async function UserList({ req, res }) {
-  const client = getClient({ req, res });
   const filter =
     typeof req.query.filter == "undefined"
       ? undefined
@@ -12,10 +10,7 @@ export default async function UserList({ req, res }) {
 
   if (req.method == "GET") {
     try {
-      const result = await client.query({
-        query: allUsers,
-        variables: { filter }
-      });
+      const result = await getAllUsers({filter,req,res})
       res.status(200).json(result);
     } catch (e) {
       res.status(400).end(JSON.stringify(e));

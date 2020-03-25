@@ -5,7 +5,7 @@ import FormContainer from "../lib/formbuilder";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 
-import taglist from "../lib/taglist";
+import taglist from "../data-access/taglist";
 
 console.log("loading addproject");
 import * as Yup from "yup";
@@ -85,199 +85,6 @@ const addUserForm = [
   flags: [Flag]
 }
 */
-
-const addEventForm = [
-  {
-    name: "_",
-    validation: Yup.object().shape({
-      dates: Yup.object().shape({
-        finish: Yup.date().min(
-          Yup.ref("start"),
-          "Finish date must be later than start date"
-        )
-      })
-    })
-  },
-  //id:ID
-  {
-    name: "id",
-    type: "hidden",
-    defaultvalue: ""
-  },
-  //:ID
-  {
-    name: "rev",
-    type: "hidden",
-    defaultvalue: ""
-  },
-  //title: String!
-  {
-    name: "title",
-    type: "text",
-    label: "Event Title",
-    placeholder: "Event Title",
-    required: true,
-    validation: Yup.string().required(),
-    defaultvalue: ""
-  },
-  {
-    name: "people_popup",
-    type: "modal",
-    formdef: addUserForm
-  },
-  {
-    name: "actionpoint_popup",
-    type: "modal",
-    formdef: addActionPointForm
-  },
-  /* 
-  input ProjectPeopleInput {
-  proposers: [ID]
-  leaders: [ID]
-  involved: [ID]
-  new: [UserInput]
-} */
-  //people: ProjectPeople -> proposers
-  {
-    name: "people.proposers",
-    type: "typeahead",
-    multiple: true,
-    label: "Reported by",
-    addItem: addPerson("proposers"),
-    required: true,
-    validation: Yup.array()
-      .required()
-      .min(1),
-    defaultvalue: []
-  },
-  //people: ProjectPeople -> new
-  {
-    name: "people.new",
-    type: "arraypopup",
-    modalForm: "people_popup",
-    label: "Register these people as users:",
-    //eslint-disable-next-line react/display-name,react/prop-types
-    summary: ({ popup, remove, value }) => {
-      return (
-        <div>
-          {" "}
-          <Button size="mini" icon="pencil" onClick={popup} />
-          <Button size="mini" icon="user delete" onClick={remove} />
-          {value}{" "}
-        </div>
-      );
-    },
-    defaultvalue: [],
-    displayif: values => values.people?.new?.length > 0
-  },
-  //description: String!
-  {
-    name: "description",
-    type: "textarea",
-    label: "What are you trying to improve?",
-    placeholder: "Enter description of project here",
-    required: true,
-    validation: Yup.string().required(),
-    defaultvalue: ""
-  },
-  //eventDate: Date
-  {
-    name: "eventDate",
-    type: "datepicker",
-    label: "Date reported",
-    required: true,
-    validation: Yup.date().required(),
-    defaultvalue: ""
-  },
-  //triumphs: String!
-  {
-    name: "triumphs",
-    type: "textarea",
-    label: "What went well?",
-    placeholder: "Triumphs",
-    required: true,
-    validation: Yup.string().required(),
-    defaultvalue: ""
-  },
-  //challenges: String!
-  {
-    name: "challenges",
-    type: "textarea",
-    label: "What could have gone better?",
-    placeholder: "Challenges",
-    required: true,
-    validation: Yup.string().required(),
-    defaultvalue: ""
-  },
-  //suggestions: String!
-  {
-    name: "suggestions",
-    type: "textarea",
-    label: "Suggestions for future events?",
-    placeholder: "Suggestions",
-    required: true,
-    validation: Yup.string().required(),
-    defaultvalue: ""
-  },
-  //actionPoints: [ActionPointInput]
-  {
-    name: "actionPoints",
-    type: "arraypopup",
-    modalForm: "actionpoint_popup",
-    label: "Action Points:",
-    //eslint-disable-next-line react/display-name,react/prop-types
-    summary: ({ popup, remove, value }) => {
-      return (
-        <div>
-          {" "}
-          <Button size="mini" icon="pencil" onClick={popup} />
-          <Button size="mini" icon="user delete" onClick={remove} />
-          {value}{" "}
-        </div>
-      );
-    },
-    defaultvalue: []
-  },
-
-  {
-    name: "category",
-    type: "checkbox",
-    options: Object.entries(taglist),
-    label: "Areas covered",
-    required: true,
-    validation: Yup.array().required(),
-    defaultvalue: []
-  },
-  {
-    name: "othertags",
-    type: "text",
-    displayif: values => values?.category?.includes?.("other"),
-    label: "Other areas covered",
-    placeholder: "Other areas covered",
-    required: true,
-    validation: Yup.string().required(),
-    defaultvalue: ""
-  },
-  {
-    name: "people.new",
-    type: "arraypopup",
-    modalForm: "people_popup",
-    label: "Register these people as users:",
-    //eslint-disable-next-line react/display-name,react/prop-types
-    summary: ({ popup, remove, value }) => {
-      return (
-        <div>
-          <Button size="mini" icon="pencil" onClick={popup} />
-          <Button size="mini" icon="user delete" onClick={remove} />
-          {value}
-        </div>
-      );
-    },
-    defaultvalue: [],
-    displayif: values => values.people?.new?.length > 0
-  }
-];
-
 const addActionPointForm = [
   {
     name: "_",
@@ -381,34 +188,242 @@ const addActionPointForm = [
   },
   {
     type: "effect",
-    effect: context => {
-      const { data: usersquery } = useSWR("/api/rest/user/all", fetch);
-      const staffnames = useMemo(() => {
-        const mapfunc = s => ({
-          key: s.id,
-          value: s.id,
-          text: s.realName,
-          description: s.category
-        });
-        return (usersquery ?? [])
-          .concat(context.values.people.added ?? [])
-          .map(mapfunc);
-      }, [usersquery, context.values.people.added]);
-
-      useEffect(() => {
-        const options = context.status.options ?? {};
-        options["people.proposers"] = staffnames;
-        options["people.leaders"] = staffnames;
-        options["people.involved"] = staffnames;
-        const newstatus = {
-          ...status,
-          options
-        };
-        context.setStatus(newstatus);
-      }, [staffnames]);
-    }
+    effect: staffnamesEffect
   }
 ];
+
+function staffnamesEffect(context) {
+  const { data: usersquery } = useSWR("/api/rest/user/all",{initialdata:[]});
+  const staffnames = useMemo(() => {
+    const mapfunc = s => ({
+      key: s.id,
+      value: s.id,
+      text: s.realName,
+      description: s.category
+    });
+    console.log(usersquery)
+    return (usersquery ?? [])
+      .concat(context?.values?.people?.added ?? [])
+      .map(mapfunc)
+      .concat({key:'moo',value:'bar',text:'meh'});
+  }, [usersquery, context?.values?.people?.added]);
+
+  useEffect(() => {
+    console.log('running effect...')
+    console.log(staffnames)
+    const options = context.status.options ?? {};
+    options["people.proposers"] = staffnames;
+    options["people.leaders"] = staffnames;
+    options["people.involved"] = staffnames;
+    const newstatus = {
+      ...context.status,
+      options
+    };
+    console.log('set status to:')
+    console.log(newstatus)
+    context.setStatus(newstatus);
+  }, [staffnames]);
+}
+const addEventForm = [
+  {
+    name: "_",
+    validation: Yup.object().shape({
+      dates: Yup.object().shape({
+        finish: Yup.date().min(
+          Yup.ref("start"),
+          "Finish date must be later than start date"
+        )
+      })
+    })
+  },
+  //id:ID
+  {
+    name: "id",
+    type: "hidden",
+    defaultvalue: ""
+  },
+  //:ID
+  {
+    name: "rev",
+    type: "hidden",
+    defaultvalue: ""
+  },
+  //title: String!
+  {
+    name: "title",
+    type: "text",
+    label: "Event Title",
+    placeholder: "Event Title",
+    required: true,
+    validation: Yup.string().required(),
+    defaultvalue: ""
+  },
+  {
+    name: "people_popup",
+    type: "modal",
+    formdef: addUserForm
+  },
+  {
+    name: "actionpoint_popup",
+    type: "modal",
+    formdef: addActionPointForm
+  },
+  /* 
+  input ProjectPeopleInput {
+  proposers: [ID]
+  leaders: [ID]
+  involved: [ID]
+  new: [UserInput]
+} */
+  //people: ProjectPeople -> proposers
+  {
+    name: "people.proposers",
+    type: "typeahead",
+    multiple: true,
+    label: "Reported by",
+    addItem: addPerson("proposers"),
+    allowNew:true,
+    required: true,
+    validation: Yup.array()
+      .required()
+      .min(1),
+    defaultvalue: []
+  },
+  {
+    name:'staffnameEffect',
+    type: "effect",
+    effect: staffnamesEffect
+  },
+  //people: ProjectPeople -> new
+  {
+    name: "people.new",
+    type: "arraypopup",
+    modalForm: "people_popup",
+    label: "Register these people as users:",
+    //eslint-disable-next-line react/display-name,react/prop-types
+    summary: ({ popup, remove, value }) => {
+      return (
+        <div>
+          {" "}
+          <Button size="mini" icon="pencil" onClick={popup} />
+          <Button size="mini" icon="user delete" onClick={remove} />
+          {value}{" "}
+        </div>
+      );
+    },
+    defaultvalue: [],
+    displayif: values => values.people?.new?.length > 0
+  },
+  //description: String!
+  {
+    name: "description",
+    type: "textarea",
+    label: "What are you trying to improve?",
+    placeholder: "Enter description of project here",
+    required: true,
+    validation: Yup.string().required(),
+    defaultvalue: ""
+  },
+  //eventDate: Date
+  {
+    name: "eventDate",
+    type: "datepicker",
+    label: "Date reported",
+    required: true,
+    validation: Yup.date().required(),
+    defaultvalue: ""
+  },
+  //triumphs: String!
+  {
+    name: "triumphs",
+    type: "textarea",
+    label: "What went well?",
+    placeholder: "Triumphs",
+    required: true,
+    validation: Yup.string().required(),
+    defaultvalue: ""
+  },
+  //challenges: String!
+  {
+    name: "challenges",
+    type: "textarea",
+    label: "What could have gone better?",
+    placeholder: "Challenges",
+    required: true,
+    validation: Yup.string().required(),
+    defaultvalue: ""
+  },
+  //suggestions: String!
+  {
+    name: "suggestions",
+    type: "textarea",
+    label: "Suggestions for future events?",
+    placeholder: "Suggestions",
+    required: true,
+    validation: Yup.string().required(),
+    defaultvalue: ""
+  },
+  //actionPoints: [ActionPointInput]
+  {
+    name: "actionPoints",
+    type: "arraypopup",
+    modalForm: "actionpoint_popup",
+    label: "Action Points:",
+    addButton:true,
+    //eslint-disable-next-line react/display-name,react/prop-types
+    summary: ({ popup, remove, value }) => {
+      return (
+        <div>
+          {" "}
+          <Button size="mini" icon="pencil" onClick={popup} />
+          <Button size="mini" icon="user delete" onClick={remove} />
+          {value}{" "}
+        </div>
+      );
+    },
+    defaultvalue: []
+  },
+
+  {
+    name: "category",
+    type: "checkbox",
+    options: Object.entries(taglist),
+    label: "Areas covered",
+    required: true,
+    validation: Yup.array().required(),
+    defaultvalue: []
+  },
+  {
+    name: "othertags",
+    type: "text",
+    displayif: values => values?.category?.includes?.("other"),
+    label: "Other areas covered",
+    placeholder: "Other areas covered",
+    required: true,
+    validation: Yup.string().required(),
+    defaultvalue: ""
+  },
+  /* {
+    name: "people.new",
+    type: "arraypopup",
+    modalForm: "people_popup",
+    label: "Register these people as users:",
+    //eslint-disable-next-line react/display-name,react/prop-types
+    summary: ({ popup, remove, value }) => {
+      return (
+        <div>
+          <Button size="mini" icon="pencil" onClick={popup} />
+          <Button size="mini" icon="user delete" onClick={remove} />
+          {value}
+        </div>
+      );
+    },
+    defaultvalue: [],
+    displayif: values => values.people?.new?.length > 0
+  } */
+];
+
+
 
 function ProjectInfoForm() {
   const router = useRouter();

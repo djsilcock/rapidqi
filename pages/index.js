@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import taglist from "../lib/taglist";
+import taglist from "../data-access/taglist";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import {
@@ -13,9 +13,11 @@ import {
   Icon
 } from "semantic-ui-react";
 
-import { useQuery } from "../lib/apollo";
-import PROJECT_LIST from "../queries/projectlist.gql";
-import CURRENT_USER from "../queries/currentuser.gql";
+//import { useQuery } from "../lib/apollo";
+//import PROJECT_LIST from "../queries/projectlist.gql";
+//import CURRENT_USER from "../queries/currentuser.gql";
+import {useCurrentUser} from '../lib/signin' 
+import useSWR from "swr";
 
 function generateLabels(doc, isAdmin) {
   const labels = doc.category.map(categoryTag => ({
@@ -95,7 +97,7 @@ function DatabaseRow({ doc }) {
   const handleHide = () => {
     setModalOpen(false);
   };
-  const { data: currentuser } = useQuery(CURRENT_USER);
+  const currentuser=useCurrentUser()
   const isAdmin = currentuser.isAdmin;
   function makehref(user) {
     return (
@@ -202,23 +204,21 @@ function DatabaseRow({ doc }) {
   );
 }
 
+export function getServerSideProps(){
+  return {props:{data:[]}}
+}
 function DatabaseTable(props) {
   const [statusfilter, setstatusfilter] = React.useState("all");
-  const docsresults = useQuery(PROJECT_LIST, {
-    variables: { filter: [statusfilter] }
-  });
-  const userresults = useQuery(CURRENT_USER);
+  const docsresults = useSWR(`/api/rest/project/all?filter=${statusfilter}`,{initialData:props.data})
   const router = useRouter();
-
-  if (userresults.loading) return "Waiting for user";
-  if (docsresults.loading) return "Waiting for database";
-  if (userresults.error) return `Error getting user: ${userresults.error}`;
+  console.log(docsresults)
+  if (docsresults.isValidating) return "Waiting for database";
   if (docsresults.error) return `Error getting documents: ${docsresults.error}`;
 
-  const currentuser = userresults.data.getLoggedInUser;
+  const currentuser = useCurrentUser();
   const isAdmin = !!currentuser?.isAdmin;
 
-  var listitems = docsresults.data.projectList.map(doc => {
+  var listitems = docsresults.data.map(doc => {
     return (
       <DatabaseRow
         doc={doc}

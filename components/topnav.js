@@ -4,7 +4,8 @@ import Link from "next/link";
 import { Menu, Icon } from "semantic-ui-react";
 
 function TopNav(props) {
-  const [user, isAdmin] = useCurrentUser();
+  const user = useCurrentUser();
+  const isAdmin = user?.isAdmin
   const loginbutton =
     !user || user.isAnonymous ? (
       <Link href="/signin" passHref>
