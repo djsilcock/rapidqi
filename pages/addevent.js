@@ -18,7 +18,9 @@ function addPerson(persongroup) {
         name: "people_popup",
         vars: { realName: item, id: "NEW-" + addedPersonCount++, category: "" }
       });
-      setFieldValue("people.added", values.people.added.concat([newitem]));
+      console.log('adding people:')
+      console.log(newitem)
+      setFieldValue("people.new", values.people.new.concat([newitem]));
       setFieldValue(
         "people." + persongroup,
         values.people[persongroup].concat([newitem.id])
@@ -107,9 +109,18 @@ const addActionPointForm = [
     defaultvalue: ""
   },
   {
+    name: "dates.proposed",
+    type: "datepicker",
+    label: "Creation date:",
+    required: true,
+    validation: Yup.date().required(),
+    defaultvalue: new Date().toISOString()
+  },
+  {
     name: "people_popup",
     type: "modal",
-    formdef: addUserForm
+    formdef: addUserForm,
+    
   },
 
   {
@@ -129,25 +140,18 @@ const addActionPointForm = [
       );
     },
     defaultvalue: [],
-    displayif: values => values.people?.new?.length > 0
+    displayif: values => values.people.new.length > 0
   },
   {
     name: "description",
     type: "textarea",
-    label: "What are you trying to improve?",
+    label: "Problem to be addressed",
     placeholder: "Enter description of project here",
     required: true,
     validation: Yup.string().required(),
     defaultvalue: ""
   },
-  {
-    name: "dates.proposed",
-    type: "datepicker",
-    label: "When was this project proposed?",
-    required: true,
-    validation: Yup.date().required(),
-    defaultvalue: ""
-  },
+  
   {
     name: "methodology",
     type: "textarea",
@@ -188,12 +192,14 @@ const addActionPointForm = [
   },
   {
     type: "effect",
-    effect: staffnamesEffect
+    effect: staffnamesEffect,
+    
   }
 ];
 
 function staffnamesEffect(context) {
   const { data: usersquery } = useSWR("/api/rest/user/all",{initialdata:[]});
+  console.log('running effect with',usersquery,context.values.people.new)
   const staffnames = useMemo(() => {
     const mapfunc = s => ({
       key: s.id,
@@ -202,11 +208,13 @@ function staffnamesEffect(context) {
       description: s.category
     });
     console.log(usersquery)
-    return (usersquery ?? [])
-      .concat(context?.values?.people?.added ?? [])
+    return []
+    .concat(usersquery ?? [])
+      .concat(context.values.people.new ?? [])
       .map(mapfunc)
       .concat({key:'moo',value:'bar',text:'meh'});
-  }, [usersquery, context?.values?.people?.added]);
+  }, [usersquery, context.values.people.new]);
+  console.log(staffnames)
 
   useEffect(() => {
     console.log('running effect...')
@@ -240,13 +248,15 @@ const addEventForm = [
   {
     name: "id",
     type: "hidden",
-    defaultvalue: ""
+    defaultvalue: "",
+    
   },
   //:ID
   {
     name: "rev",
     type: "hidden",
-    defaultvalue: ""
+    defaultvalue: "",
+    
   },
   //title: String!
   {
@@ -261,12 +271,14 @@ const addEventForm = [
   {
     name: "people_popup",
     type: "modal",
-    formdef: addUserForm
+    formdef: addUserForm,
+    
   },
   {
     name: "actionpoint_popup",
     type: "modal",
-    formdef: addActionPointForm
+    formdef: addActionPointForm,
+    
   },
   /* 
   input ProjectPeopleInput {
@@ -284,15 +296,25 @@ const addEventForm = [
     addItem: addPerson("proposers"),
     allowNew:true,
     required: true,
+    search:true,
     validation: Yup.array()
       .required()
       .min(1),
     defaultvalue: []
   },
   {
+    name: "eventDate",
+    type: "datepicker",
+    label: "Date of event",
+    required: true,
+    validation: Yup.date().required(),
+    defaultvalue: ""
+  },
+  {
     name:'staffnameEffect',
     type: "effect",
-    effect: staffnamesEffect
+    effect: staffnamesEffect,
+    
   },
   //people: ProjectPeople -> new
   {
@@ -304,35 +326,28 @@ const addEventForm = [
     summary: ({ popup, remove, value }) => {
       return (
         <div>
-          {" "}
+          
           <Button size="mini" icon="pencil" onClick={popup} />
           <Button size="mini" icon="user delete" onClick={remove} />
-          {value}{" "}
+          {`${value.realName}(${value.category})`}
         </div>
       );
     },
     defaultvalue: [],
-    displayif: values => values.people?.new?.length > 0
+    displayif: ({values}) => values.people.new.length > 0
   },
   //description: String!
   {
     name: "description",
     type: "textarea",
-    label: "What are you trying to improve?",
+    label: "Description of the event",
     placeholder: "Enter description of project here",
     required: true,
     validation: Yup.string().required(),
     defaultvalue: ""
   },
   //eventDate: Date
-  {
-    name: "eventDate",
-    type: "datepicker",
-    label: "Date reported",
-    required: true,
-    validation: Yup.date().required(),
-    defaultvalue: ""
-  },
+  
   //triumphs: String!
   {
     name: "triumphs",
