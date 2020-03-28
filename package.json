@@ -30,6 +30,7 @@
     "nedb": "^1.8.0",
     "next": "^9.3.0",
     "next-redux-wrapper": "^3.0.0-alpha.2",
+    "next-transpile-modules": "^3.1.0",
     "next-with-apollo": "^5.0.0",
     "node-lipsum": "^1.0.1",
     "pouchdb": "^7.2.1",
