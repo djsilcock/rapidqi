@@ -1,9 +1,0 @@
-query getUser($id: ID) {
-  getUser(id: $id) {
-    id
-    userName
-    realName
-    email
-    isAdmin
-  }
-}

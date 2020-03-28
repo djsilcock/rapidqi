@@ -1,9 +1,0 @@
-    query currentuser{
-        getLoggedInUser{
-                id
-                userName
-                realName
-                email
-                isAdmin
-        }
-    }
