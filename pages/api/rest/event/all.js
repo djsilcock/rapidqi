@@ -1,21 +1,16 @@
-import projectList from "../../../../data-access/queries/eventlist.gql";
-import getClient from "../../../../data-access/apollo";
+import { getEventList } from "../../../../data-access/getEventList";
 
-export default async function ProjectList({ req, res }) {
-  const client = getClient({ req, res });
+export default async function EventList(req, res) {
   const filter =
     typeof req.query.filter == "undefined"
       ? undefined
       : Array.isArray(req.query.filter)
       ? req.query.filter
       : [req.query.filter];
-
+  const withAP = !!req.query.detail;
   if (req.method == "GET") {
     try {
-      const result = await client.query({
-        query: projectList,
-        variables: { filter }
-      });
+      const result = await getEventList({ req, res, withAP, filter });
       res.status(200).json(result);
     } catch (e) {
       res.status(400).end(JSON.stringify(e));

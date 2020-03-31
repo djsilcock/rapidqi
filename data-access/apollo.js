@@ -2,7 +2,7 @@ import { SchemaLink } from "apollo-link-schema";
 import { makeExecutableSchema } from "graphql-tools";
 import resolverMap from "./resolvers";
 
-import gql from 'graphql-tag'
+import gql from "graphql-tag";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloClient } from "apollo-client";
 
@@ -13,188 +13,189 @@ import * as relpouch from "relational-pouch";
 import * as pouchfind from "pouchdb-find";
 import Cookies from "cookies";
 
-const schema=gql`
-enum YesNoPending {
-  Yes
-  No
-  Pending
-  DontKnow
-}
-enum StaffType {
-  FY1
-  FY2
-  ACCS
-  Core
-  Int
-  Higher
-  SAS
-  Consultant
-}
-scalar Date
+const schema = gql`
+  enum YesNoPending {
+    Yes
+    No
+    Pending
+    DontKnow
+  }
+  enum StaffType {
+    FY1
+    FY2
+    ACCS
+    Core
+    Int
+    Higher
+    SAS
+    Consultant
+  }
+  scalar Date
 
-type User {
-  id: ID
-  rev: ID
-  userName: String
-  realName: String
-  email: String
-  category: StaffType
-  isAdmin: Boolean
-}
+  type User {
+    id: ID
+    rev: ID
+    userName: String
+    realName: String
+    email: String
+    category: StaffType
+    isAdmin: Boolean
+  }
 
-type Category {
-  id: ID
-  name: String
-}
+  type Category {
+    id: ID
+    name: String
+  }
 
-type ProjectPeople {
-  proposers: [User]
-  leaders: [User]
-  involved: [User]
-}
+  type ProjectPeople {
+    proposers: [User]
+    leaders: [User]
+    involved: [User]
+  }
 
-type ProjectDates {
-  proposed: Date
-  start: Date
-  finish: Date
-}
+  type ProjectDates {
+    proposed: Date
+    start: Date
+    finish: Date
+  }
 
-type Project {
-  id: ID!
-  rev: ID!
-  title: String!
-  people: ProjectPeople
-  description: String!
-  dates: ProjectDates
-  methodology: String!
-  category: [Category]
-  email: String
-  lastUpdated: Date
-  lastUpdatedBy: User
-  flags: [Flag]
-}
-type ActionPoint {
-  id: ID!
-  rev: ID!
-  title: String!
-  people: ProjectPeople
-  description: String!
-  dates: ProjectDates
-  events: [Event]
-  methodology: String!
-  category: [Category]
-  lastUpdated: Date
-  lastUpdatedBy: User
-  flags: [Flag]
-}
+  type Project {
+    id: ID!
+    rev: ID!
+    title: String!
+    people: ProjectPeople
+    description: String!
+    dates: ProjectDates
+    methodology: String!
+    category: [Category]
+    email: String
+    lastUpdated: Date
+    lastUpdatedBy: User
+    flags: [Flag]
+  }
+  type ActionPoint {
+    id: ID!
+    rev: ID!
+    title: String!
+    people: ProjectPeople
+    description: String!
+    dates: ProjectDates
+    events: [Event]
+    methodology: String!
+    category: [Category]
+    lastUpdated: Date
+    lastUpdatedBy: User
+    flags: [Flag]
+  }
 
-type Event {
-  id: ID!
-  rev: ID!
-  title: String!
-  people: ProjectPeople
-  eventDate: Date
-  triumphs: String!
-  challenges: String!
-  suggestions: String!
-  actionPoints: [ActionPoint]
-  dates: ProjectDates
-  description: String!
-  category: [Category]
-  email: String
-  lastUpdated: Date
-  lastUpdatedBy: User
-  flags: [Flag]
-}
+  type Event {
+    id: ID!
+    rev: ID!
+    title: String!
+    people: ProjectPeople
+    eventDate: Date
+    triumphs: String!
+    challenges: String!
+    suggestions: String!
+    actionPoints: [ActionPoint]
+    dates: ProjectDates
+    description: String!
+    category: [Category]
+    email: String
+    lastUpdated: Date
+    lastUpdatedBy: User
+    flags: [Flag]
+  }
 
-input ActionPointInput {
-  id: ID!
-  rev: ID!
-  title: String!
-  people: ProjectPeopleInput
-  description: String!
-  dates: ProjectDatesInput
-  events: [ID]
-  methodology: String!
-  category: [ID]
-  lastUpdated: Date
-  lastUpdatedBy: UserInput
-  flags: [Flag]
-}
+  input ActionPointInput {
+    id: ID!
+    rev: ID!
+    title: String!
+    people: ProjectPeopleInput
+    description: String!
+    dates: ProjectDatesInput
+    events: [ID]
+    methodology: String!
+    category: [ID]
+    lastUpdated: Date
+    lastUpdatedBy: UserInput
+    flags: [Flag]
+  }
 
-input EventInput {
-  id: ID!
-  rev: ID!
-  title: String!
-  people: ProjectPeopleInput
-  eventDate: Date
-  triumphs: String!
-  challenges: String!
-  suggestions: String!
-  actionPoints: [ActionPointInput]
-  dates: ProjectDatesInput
-  description: String!
-  category: [ID]
-  email: String
-  flags: [Flag]
-}
+  input EventInput {
+    id: ID!
+    rev: ID!
+    title: String!
+    people: ProjectPeopleInput
+    eventDate: Date
+    triumphs: String!
+    challenges: String!
+    suggestions: String!
+    actionPoints: [ActionPointInput]
+    dates: ProjectDatesInput
+    description: String!
+    category: [ID]
+    email: String
+    flags: [Flag]
+  }
 
-input UserInput {
-  id: ID
-  rev: ID
-  realName: String
-  email: String
-  category: StaffType
-}
-input ProjectPeopleInput {
-  proposers: [ID]
-  leaders: [ID]
-  involved: [ID]
-  new: [UserInput]
-}
-input ProjectDatesInput {
-  proposed: Date
-  start: Date
-  finish: Date
-}
+  input UserInput {
+    id: ID
+    rev: ID
+    realName: String
+    email: String
+    category: StaffType
+  }
+  input ProjectPeopleInput {
+    proposers: [ID]
+    leaders: [ID]
+    involved: [ID]
+    new: [UserInput]
+  }
+  input ProjectDatesInput {
+    proposed: Date
+    start: Date
+    finish: Date
+  }
 
-enum Flag {
-  needsVetting
-  isVetted
-  needsLead
-  isRecruiting
-  isCompleted
-  hasCaldicott
-  hasResearch
-  maybeCaldicott
-  maybeResearch
-  pendingCaldicott
-  pendingResearch
-  notCaldicott
-  notResearch
-  criticalIncident
-  canDisplay
-  hidden
+  enum Flag {
+    needsVetting
+    isVetted
+    needsLead
+    isRecruiting
+    isCompleted
+    hasCaldicott
+    hasResearch
+    maybeCaldicott
+    maybeResearch
+    pendingCaldicott
+    pendingResearch
+    notCaldicott
+    notResearch
+    criticalIncident
+    canDisplay
+    hidden
 
-  recentlyUpdated
-  all
-}
+    recentlyUpdated
+    all
+  }
 
-type Query {
-  getLoggedInUser: User
-  getProject(id: ID): Project
-  projectList(filter: [Flag]): [Project]
-  allUsers: [User!]!
-  getUser(id: ID): User
-  getCategories:[Category]
-}
+  type Query {
+    getLoggedInUser: User
+    getProject(id: ID): Project
+    projectList(filter: [Flag]): [Project]
+    eventList(filter: [Flag]): [Event]
+    allUsers: [User!]!
+    getUser(id: ID): User
+    getCategories: [Category]
+  }
 
-type Mutation {
-  addUser(user: UserInput): User
-  addEvent(event: EventInput): Event
-  updateUser(user: UserInput): User
-}
-`
+  type Mutation {
+    addUser(user: UserInput): User
+    addEvent(event: EventInput): Event
+    updateUser(user: UserInput): User
+  }
+`;
 
 PouchDB.plugin(relpouch);
 PouchDB.plugin(pouchfind);

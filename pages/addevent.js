@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable react/prop-types */
 import React, { useEffect, useMemo, useRef } from "react";
 import { Button } from "semantic-ui-react";
 import FormContainer from "../lib/formbuilder";
@@ -6,25 +6,25 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 
 import taglist from "../data-access/taglist";
-
-console.log("loading addproject");
 import * as Yup from "yup";
 
 var addedPersonCount = 0;
-function addPerson(persongroup) {
-  return async (item, { values, setFieldValue, queueModal }) => {
+function addPerson() {
+  return async (item, ctx) => {
     try {
-      const newitem = await queueModal({
-        name: "people_popup",
-        vars: { realName: item, id: "NEW-" + addedPersonCount++, category: "" }
-      });
-      console.log('adding people:')
-      console.log(newitem)
-      setFieldValue("people.new", values.people.new.concat([newitem]));
-      setFieldValue(
-        "people." + persongroup,
-        values.people[persongroup].concat([newitem.id])
-      );
+      const newitem = (
+        await ctx.dispatch({
+          type: "queueModal",
+          name: "people_popup",
+          vars: {
+            realName: item,
+            id: "NEW-" + addedPersonCount++,
+            category: ""
+          }
+        })
+      )[0];
+      ctx.setFieldValue("people.new", ctx.values.people.new.concat([newitem]));
+      return newitem.id;
     } catch {
       return;
     }
@@ -67,26 +67,7 @@ const addUserForm = [
     defaultvalue: ""
   }
 ];
-/*
-//input EventInput {
-  id: ID
-  rev: ID
-  title: String!
-  people: ProjectPeople
-  eventDate: Date
-  triumphs: String!
-  challenges: String!
-  suggestions: String!
-  actionPoints: [ActionPointInput]
-  dates: ProjectDates
-  description: String!
-  category: [Category]
-  email: String
-  lastUpdated: Date
-  lastUpdatedBy: User
-  flags: [Flag]
-}
-*/
+
 const addActionPointForm = [
   {
     name: "_",
@@ -119,8 +100,7 @@ const addActionPointForm = [
   {
     name: "people_popup",
     type: "modal",
-    formdef: addUserForm,
-    
+    formdef: addUserForm
   },
 
   {
@@ -151,7 +131,7 @@ const addActionPointForm = [
     validation: Yup.string().required(),
     defaultvalue: ""
   },
-  
+
   {
     name: "methodology",
     type: "textarea",
@@ -192,14 +172,14 @@ const addActionPointForm = [
   },
   {
     type: "effect",
-    effect: staffnamesEffect,
-    
+    effect: staffnamesEffect
   }
 ];
 
 function staffnamesEffect(context) {
-  const { data: usersquery } = useSWR("/api/rest/user/all",{initialdata:[]});
-  console.log('running effect with',usersquery,context.values.people.new)
+  const { data: usersquery } = useSWR("/api/rest/user/all", {
+    initialdata: []
+  });
   const staffnames = useMemo(() => {
     const mapfunc = s => ({
       key: s.id,
@@ -207,18 +187,14 @@ function staffnamesEffect(context) {
       text: s.realName,
       description: s.category
     });
-    console.log(usersquery)
+
     return []
-    .concat(usersquery ?? [])
+      .concat(usersquery ?? [])
       .concat(context.values.people.new ?? [])
-      .map(mapfunc)
-      .concat({key:'moo',value:'bar',text:'meh'});
+      .map(mapfunc);
   }, [usersquery, context.values.people.new]);
-  console.log(staffnames)
 
   useEffect(() => {
-    console.log('running effect...')
-    console.log(staffnames)
     const options = context.status.options ?? {};
     options["people.proposers"] = staffnames;
     options["people.leaders"] = staffnames;
@@ -227,8 +203,6 @@ function staffnamesEffect(context) {
       ...context.status,
       options
     };
-    console.log('set status to:')
-    console.log(newstatus)
     context.setStatus(newstatus);
   }, [staffnames]);
 }
@@ -244,21 +218,16 @@ const addEventForm = [
       })
     })
   },
-  //id:ID
   {
     name: "id",
     type: "hidden",
-    defaultvalue: "",
-    
+    defaultvalue: ""
   },
-  //:ID
   {
     name: "rev",
     type: "hidden",
-    defaultvalue: "",
-    
+    defaultvalue: ""
   },
-  //title: String!
   {
     name: "title",
     type: "text",
@@ -271,32 +240,22 @@ const addEventForm = [
   {
     name: "people_popup",
     type: "modal",
-    formdef: addUserForm,
-    
+    formdef: addUserForm
   },
   {
     name: "actionpoint_popup",
     type: "modal",
-    formdef: addActionPointForm,
-    
+    formdef: addActionPointForm
   },
-  /* 
-  input ProjectPeopleInput {
-  proposers: [ID]
-  leaders: [ID]
-  involved: [ID]
-  new: [UserInput]
-} */
-  //people: ProjectPeople -> proposers
   {
     name: "people.proposers",
     type: "typeahead",
     multiple: true,
     label: "Reported by",
     addItem: addPerson("proposers"),
-    allowNew:true,
+    allowNew: true,
     required: true,
-    search:true,
+    search: true,
     validation: Yup.array()
       .required()
       .min(1),
@@ -311,12 +270,10 @@ const addEventForm = [
     defaultvalue: ""
   },
   {
-    name:'staffnameEffect',
+    name: "staffnameEffect",
     type: "effect",
-    effect: staffnamesEffect,
-    
+    effect: staffnamesEffect
   },
-  //people: ProjectPeople -> new
   {
     name: "people.new",
     type: "arraypopup",
@@ -326,7 +283,6 @@ const addEventForm = [
     summary: ({ popup, remove, value }) => {
       return (
         <div>
-          
           <Button size="mini" icon="pencil" onClick={popup} />
           <Button size="mini" icon="user delete" onClick={remove} />
           {`${value.realName}(${value.category})`}
@@ -334,9 +290,8 @@ const addEventForm = [
       );
     },
     defaultvalue: [],
-    displayif: ({values}) => values.people.new.length > 0
+    displayif: ({ values }) => values.people.new.length > 0
   },
-  //description: String!
   {
     name: "description",
     type: "textarea",
@@ -346,9 +301,6 @@ const addEventForm = [
     validation: Yup.string().required(),
     defaultvalue: ""
   },
-  //eventDate: Date
-  
-  //triumphs: String!
   {
     name: "triumphs",
     type: "textarea",
@@ -358,7 +310,6 @@ const addEventForm = [
     validation: Yup.string().required(),
     defaultvalue: ""
   },
-  //challenges: String!
   {
     name: "challenges",
     type: "textarea",
@@ -368,7 +319,6 @@ const addEventForm = [
     validation: Yup.string().required(),
     defaultvalue: ""
   },
-  //suggestions: String!
   {
     name: "suggestions",
     type: "textarea",
@@ -378,13 +328,12 @@ const addEventForm = [
     validation: Yup.string().required(),
     defaultvalue: ""
   },
-  //actionPoints: [ActionPointInput]
   {
     name: "actionPoints",
     type: "arraypopup",
     modalForm: "actionpoint_popup",
     label: "Action Points:",
-    addButton:true,
+    addButton: true,
     //eslint-disable-next-line react/display-name,react/prop-types
     summary: ({ popup, remove, value }) => {
       return (
@@ -418,7 +367,7 @@ const addEventForm = [
     validation: Yup.string().required(),
     defaultvalue: ""
   },
-  /* {
+  {
     name: "people.new",
     type: "arraypopup",
     modalForm: "people_popup",
@@ -435,14 +384,11 @@ const addEventForm = [
     },
     defaultvalue: [],
     displayif: values => values.people?.new?.length > 0
-  } */
+  }
 ];
-
-
 
 function ProjectInfoForm() {
   const router = useRouter();
-  const formref = useRef();
   const isCompleted = useRef(false);
 
   useEffect(() => {
@@ -465,10 +411,9 @@ function ProjectInfoForm() {
   const handleClose = () => {
     isCompleted.current = true;
   };
-
   return (
     <div>
-      <h2>Project information</h2>
+      <h2>Event information</h2>
       <div>
         <FormContainer
           formname="addproject"
@@ -477,31 +422,10 @@ function ProjectInfoForm() {
           initialValues={initialvalues}
           initialStatus={initialStatus}
           formdef={formdef}
-          innerRef={formref}
-        >
-          {({ submitForm, resetForm }) => {
-            return (
-              <>
-                <Button
-                  icon="check"
-                  content="Save"
-                  type="button"
-                  onClick={submitForm}
-                />
-                <Button
-                  icon="cancel"
-                  content="Cancel"
-                  type="button"
-                  onClick={resetForm}
-                />
-              </>
-            );
-          }}
-        </FormContainer>
+        />
       </div>
       <hr />
     </div>
   );
 }
-
 export default ProjectInfoForm;

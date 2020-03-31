@@ -5,7 +5,7 @@ import { Menu, Icon } from "semantic-ui-react";
 
 function TopNav(props) {
   const user = useCurrentUser();
-  const isAdmin = user?.isAdmin
+  const isAdmin = user?.isAdmin;
   const loginbutton =
     !user || user.isAnonymous ? (
       <Link href="/signin" passHref>
@@ -33,7 +33,7 @@ function TopNav(props) {
       </Link>
       <Link href="/addevent">
         <Menu.Item>
-          <Icon name="thumbs up" />
+          <Icon name="pencil" />
           New event
         </Menu.Item>
       </Link>

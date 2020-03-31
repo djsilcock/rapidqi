@@ -38,6 +38,17 @@ async function projectList(parent, { filter }, { database, currentUserAdmin }) {
   const result = (await database.find({ selector: where })).docs.map(
     deserialize
   );
+}
+async function eventList(parent, { filter }, { database, currentUserAdmin }) {
+  const tags = filter?.includes("all") ? [] : filter ?? [];
+  const where = { _id: { $gte: "event ", $lt: "event!" } };
+  if (tags.length > 0) {
+    where.flags = { $all: tags };
+  }
+
+  const result = (await database.find({ selector: where })).docs.map(
+    deserialize
+  );
 
   return result;
 }
@@ -216,9 +227,9 @@ async function addUser(parent, { user }, { database }, info) {
   );
 }
 
-async function getCategories(){
-  const categories=await import("./taglist")
-  return Object.entries(categories).map(([id,name])=>({id,name}))
+async function getCategories() {
+  const categories = await import("./taglist");
+  return Object.entries(categories).map(([id, name]) => ({ id, name }));
 }
 
 async function getCategory(parent, args, { database }, { fieldName }) {
@@ -252,6 +263,7 @@ const resolvers = {
     getLoggedInUser,
     getProject,
     projectList,
+    eventList,
     getUser,
     allUsers,
     getCategories
