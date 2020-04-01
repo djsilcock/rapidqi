@@ -23,7 +23,11 @@ function addPerson() {
           }
         })
       )[0];
-      ctx.setFieldValue("people.new", ctx.values.people.new.concat([newitem]));
+      const targetContext = ctx.status.parent || ctx;
+      targetContext.setFieldValue(
+        "people.new",
+        targetContext.values.people.new.concat([newitem])
+      );
       return newitem.id;
     } catch {
       return;
@@ -191,8 +195,13 @@ function staffnamesEffect(context) {
     return []
       .concat(usersquery ?? [])
       .concat(context.values.people.new ?? [])
+      .concat(context.status.parent?.values.people.new ?? [])
       .map(mapfunc);
-  }, [usersquery, context.values.people.new]);
+  }, [
+    usersquery,
+    context.values.people.new,
+    context.status.parent?.values.people.new
+  ]);
 
   useEffect(() => {
     const options = context.status.options ?? {};
