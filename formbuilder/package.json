@@ -1,0 +1,40 @@
+{
+  "name": "formbuilder",
+  "version": "0.1.0",
+  "private": true,
+  "module": "./index.js",
+  "dependencies": {
+    "formik": "^2.1.4",
+    "immutable": "^4.0.0-rc.12",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "semantic-ui-calendar-react": "^0.14.4",
+    "semantic-ui-react": "^0.88.0",
+    "yup": "^0.28.0"
+  },
+  "scripts": {},
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 9",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@testing-library/react": "^9.4.1",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-config-react-app": "^5.2.0",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "got": "^10.6.0",
+    "jest": "^25.1.0"
+  }
+}

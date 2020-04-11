@@ -6,7 +6,7 @@ const secrets = require("./vault");
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true"
 });
-const withTM = require("next-transpile-modules")(["swr"]);
+const withTM = require("next-transpile-modules")(["swr", "formbuilder"]);
 module.exports = withBundleAnalyzer(
   withTM({
     webpack: function(config, { defaultLoaders, isServer, webpack }) {

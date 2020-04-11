@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useMemo, useRef } from "react";
 import { Button } from "semantic-ui-react";
-import FormContainer from "../lib/formbuilder";
+import FormContainer from "formbuilder";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 
@@ -124,7 +124,7 @@ const addActionPointForm = [
       );
     },
     defaultvalue: [],
-    displayif: values => values.people.new.length > 0
+    displayif: values => values.people?.new?.length > 0
   },
   {
     name: "description",
@@ -194,13 +194,13 @@ function staffnamesEffect(context) {
 
     return []
       .concat(usersquery ?? [])
-      .concat(context.values.people.new ?? [])
-      .concat(context.status.parent?.values.people.new ?? [])
+      .concat(context.values.people?.new ?? [])
+      .concat(context.status.parent?.values.people?.new ?? [])
       .map(mapfunc);
   }, [
     usersquery,
-    context.values.people.new,
-    context.status.parent?.values.people.new
+    context.values.people?.new,
+    context.status.parent?.values.people?.new
   ]);
 
   useEffect(() => {
@@ -299,7 +299,7 @@ const addEventForm = [
       );
     },
     defaultvalue: [],
-    displayif: ({ values }) => values.people.new.length > 0
+    displayif: ({ values }) => values.people?.new?.length > 0
   },
   {
     name: "description",
@@ -343,6 +343,15 @@ const addEventForm = [
     modalForm: "actionpoint_popup",
     label: "Action Points:",
     addButton: true,
+    controlFlow: async ({ ctx, index, value, popup }) => {
+      const newnames = ctx.values.people.new;
+      var newvalues = Object.assign({}, value);
+      newvalues.people.new = newnames;
+      newvalues = await popup(newvalues);
+      ctx.setFieldValue("people.new", newvalues.people.new);
+      newvalues.people.new = [];
+      return newvalues;
+    },
     //eslint-disable-next-line react/display-name,react/prop-types
     summary: ({ popup, remove, value }) => {
       return (

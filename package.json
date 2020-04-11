@@ -21,6 +21,7 @@
     "cookies": "^0.8.0",
     "create-react-class": "^15.6.3",
     "dotenv": "^8.2.0",
+    "formbuilder": "github:djsilcock/formbuilder",
     "formik": "^2.1.4",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
