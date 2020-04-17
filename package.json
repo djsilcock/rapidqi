@@ -5,6 +5,7 @@
   "dependencies": {
     "@apollo/react-ssr": "^3.1.3",
     "@apollo/server": "^3.0.0-alpha.1",
+    "@fluentui/react-northstar": "^0.48.0",
     "@next/bundle-analyzer": "^9.2.1",
     "@zeit/next-css": "^1.0.1",
     "apollo-cache-inmemory": "^1.6.5",

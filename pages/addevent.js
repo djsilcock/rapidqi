@@ -226,6 +226,7 @@ const addEventForm = [
         )
       })
     })
+    //validation: { "Finish date must be later than start date": (values) => (values.dates.start < values.dates.finish) }
   },
   {
     name: "id",
